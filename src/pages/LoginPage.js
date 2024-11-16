@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LoginPage.css';
 import '../App.css';
+import Anshu from './Company.png'
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
@@ -59,7 +60,7 @@ const LoginPage = () => {
     return (
         <div className="container">
             <div className="inner-container">
-                <img src="/static/ipo/assets/company-logo.png" className="site-logo" alt="Company Logo" />
+                <img src={Anshu} className="site-logo" alt="Company Logo" />
                 <form onSubmit={handleLoginSubmit} id="loginForm">
                     <div className="input-ele-container">
                         <label className="input-label" htmlFor="usernameInput">Username</label>

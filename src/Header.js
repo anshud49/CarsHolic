@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
+import './App.css'
+import Anshu from './pages/Company.png'
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
@@ -53,8 +54,9 @@ function Header() {
   return (
     <header>
       <Link to="/" className="logo">
-        CarHolic
+      <img src={Anshu} className="site-logoHeader" alt="Company Logo" />
       </Link>
+      
       <nav>
         {isLoggedIn ? (
           <>
