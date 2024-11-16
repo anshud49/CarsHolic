@@ -74,7 +74,7 @@ export default function CreatePost() {
       images: images.length > 0 ? images : [],
     };
   
-    console.log(carData); // Log car data
+ 
   
     const response = await fetch('https://carsholic.vercel.app/api/cars/', {
       method: 'POST',

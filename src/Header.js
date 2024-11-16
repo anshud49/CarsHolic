@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './App.css'
-import Anshu from './pages/Company.png'
+import './App.css';
+import Anshu from './pages/Company.png';
+
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const accessToken = localStorage.getItem('access_token');
-    if (accessToken) {
-    
+   
+    const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
+    if (storedIsLoggedIn === 'true') {
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
@@ -33,7 +34,7 @@ function Header() {
       })
         .then((response) => {
           if (response.ok || response.status === 205) {
-            
+           
             localStorage.removeItem('access_token');
             localStorage.removeItem('refresh_token');
             localStorage.setItem('isLoggedIn', 'false');
@@ -54,9 +55,9 @@ function Header() {
   return (
     <header>
       <Link to="/" className="logo">
-      <img src={Anshu} className="site-logoHeader" alt="Company Logo" />
+        <img src={Anshu} className="site-logoHeader" alt="Company Logo" />
       </Link>
-      
+
       <nav>
         {isLoggedIn ? (
           <>

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LoginPage.css';
 import '../App.css';
-import Anshu from './Company.png'
+import Anshu from './Company.png';
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
@@ -11,51 +11,52 @@ const LoginPage = () => {
     const [error, setError] = useState(null);
     const navigate = useNavigate(); 
 
+    useEffect(() => {
+       
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('refresh_token');
+        localStorage.setItem('isLoggedIn', 'false');
+    }, []);
+
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
 
     const handleLoginSubmit = async (event) => {
-      event.preventDefault();
-  
+        event.preventDefault();
+        setError(null);
 
-      setError(null);
-  
-      try {
-          const response = await fetch('https://carsholic.vercel.app/api/login/', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ username, password }),  
-          });
-  
-          const data = await response.json();
-  
-          if (!response.ok) {
-              throw new Error(data.message || 'Invalid username or password');
-          }
-  
-         
-          if (data.access && data.refresh) {
-              localStorage.setItem('access_token', data.access);
-              localStorage.setItem('refresh_token', data.refresh);
-              localStorage.setItem('isLoggedIn', 'true');
-             
-              navigate('/'); 
-          } else {
-              throw new Error('Missing tokens');
-          }
-      } catch (error) {
-          console.error('Login failed:', error);
-          setError(error.message || 'An error occurred');
-          localStorage.setItem('isLoggedIn', 'false');
-        
-          setUsername('');  
-          setPassword('');  
-      }
-  };
-  
+        try {
+            const response = await fetch('https://carsholic.vercel.app/api/login/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),  
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || 'Invalid username or password');
+            }
+
+            if (data.access && data.refresh) {
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('access_token', data.access);
+                localStorage.setItem('refresh_token', data.refresh); 
+                navigate('/'); 
+            } else {
+                throw new Error('Missing tokens');
+            }
+        } catch (error) {
+            console.error('Login failed:', error);
+            setError(error.message || 'An error occurred');
+            localStorage.setItem('isLoggedIn', 'false');
+            setUsername('');  
+            setPassword('');  
+        }
+    };
 
     return (
         <div className="container">

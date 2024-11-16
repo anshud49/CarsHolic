@@ -76,7 +76,7 @@ form {
 .pass-container a {
   font-size: 13px;
   text-decoration: none;
-  color: #2cabab; /* Complementary color */
+  color: #2cabab; 
 }
 
 .toggle-password {
@@ -105,7 +105,7 @@ form {
 }
 
 .text-input:focus {
-  border-color: #2cabab; /* Complementary color */
+  border-color: #2cabab; 
   outline: none;
   box-shadow: 0 0 3px #2cabab;
 }
@@ -114,7 +114,7 @@ form {
   height: 48px;
   border-radius: 6px;
   border: none;
-  background-color: #2cabab; /* Complementary color */
+  background-color: #2cabab; 
   color: white;
   font-weight: 600;
   cursor: pointer;
@@ -122,7 +122,7 @@ form {
 }
 
 .login-button:hover {
-  background-color: #239393; /* Slightly darker */
+  background-color: #239393; 
 }
 
 .or-container {
