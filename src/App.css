@@ -1,0 +1,284 @@
+
+
+body {
+  color: #222;
+  overflow-y:auto;
+  height:100vh;
+  overflow-y:auto;
+}
+
+
+
+
+main{
+  height:100vh;
+  overflow-y:auto;
+  padding: 10px 0px;
+  margin-top: 10px;
+}
+
+
+.car-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0 auto;
+  padding-top: 20px;
+
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  align-items: center;
+  padding: 10px 10px; 
+}
+
+header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header a.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+header nav {
+  display: flex;
+  gap: 15px;
+}
+
+header nav a {
+  font-size: 1rem;
+  color: #333;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+}
+
+header nav a:hover {
+  background-color: #f4f4f4;
+  border-radius: 5px;
+}
+
+header nav a:active {
+  background-color: #ddd;
+}
+
+
+
+.car {
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+  transition: box-shadow 0.3s ease-in-out;
+  margin-bottom: 30px;
+  padding: 20px; 
+}
+
+.car:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.car-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px; 
+}
+
+.car-logo img {
+  width: auto; 
+  height: 100px; 
+  object-fit: cover;
+  object-position: center center;
+}
+
+h1, h2 {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.car-details {
+  padding: 15px;
+  background-color: #f8f8f8;
+  border-top: 1px solid #ccc;
+}
+
+.car-details p {
+  margin: 5px 0;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.car-images {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  overflow: auto;
+  max-height: 300px;
+}
+
+.car-images img {
+  width: 50%;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 8px;
+}
+
+.create-car-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.create-car-form h1,
+.create-car-form h2 {
+  text-align: center;
+  color: #333;
+}
+
+.create-car-form input,
+.create-car-form textarea,
+.create-car-form button {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.create-car-form textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.create-car-form button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.create-car-form button:hover {
+  background-color: #555;
+}
+
+.create-car-form button:active {
+  background-color: #222;
+}
+
+.create-car-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.create-car-form h1,
+.create-car-form h2 {
+  text-align: center;
+  color: #333;
+}
+
+.create-car-form input,
+.create-car-form textarea,
+.create-car-form button {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.create-car-form textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.create-car-form button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.create-car-form button:hover {
+  background-color: #555;
+}
+
+.create-car-form button:active {
+  background-color: #222;
+}
+
+.create-car-form ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.create-car-form ul li {
+  margin-bottom: 5px;
+}
+.car-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px;
+}
+
+.car-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.car-actions button:hover {
+  opacity: 0.8;
+}
+
+.car-actions button:focus {
+  outline: none;
+}
+
+.car-actions button.edit-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.car-actions button.delete-btn {
+  background-color: #F44336;
+  color: white;
+}
+
+.car-actions button.edit-btn:hover {
+  background-color: #45a049;
+}
+
+.car-actions button.delete-btn:hover {
+  background-color: #e53935;
+}
+
+.car-actions button.edit-btn:focus {
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.car-actions button.delete-btn:focus {
+  box-shadow: 0 0 5px rgba(244, 67, 54, 0.5);
+}
