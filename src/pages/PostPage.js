@@ -74,22 +74,25 @@ export default function PostPage() {
 
   return (
     <div className="car-page">
-      <input
-        type="text"
-        placeholder="Search"
-        onChange={(e) => {
-      setSearch(e.target.value);
-          if (!e.target.value) {
-            setDisplay(cars);
-          } else {
-            setDisplay(cars.filter(car =>
-              car.description.includes(search) ||
-              car.title.includes(search) ||
-              car.tags.includes(search)
-            ));
-          }
-        }}
-      />
+        <input
+      type="text"
+      placeholder="Search"
+      onChange={(e) => {
+        setSearch(e.target.value);
+        if (!e.target.value) {
+          setDisplay(cars);
+        } else {
+          const searchTerm = e.target.value.toLowerCase();
+          setDisplay(
+            cars.filter((car) =>
+              car.description.toLowerCase().includes(searchTerm) ||
+              car.title.toLowerCase().includes(searchTerm) ||
+              car.tags.toLowerCase().includes(searchTerm)
+            )
+          );
+        }
+      }}
+    />
 
       {display.map((car) => (
         <div key={car.id} className="car">
