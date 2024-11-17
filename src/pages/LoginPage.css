@@ -81,8 +81,8 @@ form {
 
 .toggle-password {
   position: absolute;
-  top: 50%;
-  right: 16px;
+  top: 57%;
+  right: 10px;
   transform: translate(-50%);
   cursor: pointer;
   font-size: 18px;

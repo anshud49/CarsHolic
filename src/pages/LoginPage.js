@@ -9,10 +9,10 @@ const LoginPage = () => {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState(null);
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     useEffect(() => {
-       
+
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
         localStorage.setItem('isLoggedIn', 'false');
@@ -32,7 +32,7 @@ const LoginPage = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ username, password }),  
+                body: JSON.stringify({ username, password }),
             });
 
             const data = await response.json();
@@ -44,8 +44,8 @@ const LoginPage = () => {
             if (data.access && data.refresh) {
                 localStorage.setItem('isLoggedIn', 'true');
                 localStorage.setItem('access_token', data.access);
-                localStorage.setItem('refresh_token', data.refresh); 
-                navigate('/'); 
+                localStorage.setItem('refresh_token', data.refresh);
+                navigate('/');
             } else {
                 throw new Error('Missing tokens');
             }
@@ -53,8 +53,8 @@ const LoginPage = () => {
             console.error('Login failed:', error);
             setError(error.message || 'An error occurred');
             localStorage.setItem('isLoggedIn', 'false');
-            setUsername('');  
-            setPassword('');  
+            setUsername('');
+            setPassword('');
         }
     };
 
@@ -65,12 +65,12 @@ const LoginPage = () => {
                 <form onSubmit={handleLoginSubmit} id="loginForm">
                     <div className="input-ele-container">
                         <label className="input-label" htmlFor="usernameInput">Username</label>
-                        <input 
-                            type="text" 
-                            id="usernameInput" 
-                            className="text-input" 
+                        <input
+                            type="text"
+                            id="usernameInput"
+                            className="text-input"
                             value={username}
-                            onChange={(e) => setUsername(e.target.value)} 
+                            onChange={(e) => setUsername(e.target.value)}
                             autoComplete="username"
                         />
                     </div>
@@ -79,16 +79,16 @@ const LoginPage = () => {
                             <label className="input-label" htmlFor="passwordInput">Password</label>
                             <a href="/forgotpassword" className="forgot-password-link">Forgot Password?</a>
                         </div>
-                        <input 
-                            type={showPassword ? 'text' : 'password'} 
-                            id="passwordInput" 
-                            className="text-input" 
+                        <input
+                            type={showPassword ? 'text' : 'password'}
+                            id="passwordInput"
+                            className="text-input"
                             value={password}
-                            onChange={(e) => setPassword(e.target.value)} 
+                            onChange={(e) => setPassword(e.target.value)}
                             autoComplete="current-password"
                         />
-                        <i 
-                            className={`bi ${showPassword ? 'bi-eye' : 'bi-eye-slash'} toggle-password`} 
+                        <i
+                            className={`fa-regular ${showPassword ? 'fa-eye-slash' : 'fa-solid fa-eye'} toggle-password`}
                             onClick={togglePasswordVisibility}
                         ></i>
                     </div>
