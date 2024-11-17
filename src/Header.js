@@ -15,7 +15,7 @@ function Header() {
     } else {
       setIsLoggedIn(false);
     }
-  }, []);
+  }, [localStorage.getItem('isLoggedIn')]);
 
   const logout = (event) => {
     event.preventDefault();
@@ -78,3 +78,10 @@ function Header() {
 }
 
 export default Header;
+
+
+
+
+
+
+
