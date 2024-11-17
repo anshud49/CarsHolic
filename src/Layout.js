@@ -5,9 +5,12 @@ import './App.css'
 
 export default function Layout() {
   return (
-    <main>
+    <>
+      
+      <main>
       <Header />
-      <Outlet />
-    </main>
+        <Outlet />
+      </main>
+    </>
   );
 }
