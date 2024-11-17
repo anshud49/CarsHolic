@@ -48,7 +48,7 @@ export default function PostPage() {
     };
 
     fetchCars();
-  }, [navigate]);
+  }, [navigate,cars]);
 
   const [search, setSearch] = useState('');
 
