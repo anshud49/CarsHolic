@@ -175,7 +175,7 @@ form {
   text-align: center;
 }
 
-/* Responsive Styles */
+
 @media (max-width: 768px) {
   body {
     padding-top: 30px;
@@ -224,4 +224,10 @@ form {
   .error-message {
     font-size: 13px;
   }
+}
+.description
+{
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 30px;
 }

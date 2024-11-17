@@ -5,6 +5,8 @@ import '../App.css'
 export default function PostPage() {
   const [cars, setCars] = useState([]);
   const [display, setDisplay] = useState([]);
+  const [search, setSearch] = useState('');
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -13,6 +15,11 @@ export default function PostPage() {
 
       if (!accessToken) {
         navigate('/login');
+        return;
+      }
+
+      if (!navigator.onLine) {
+        setError('No internet connection. Please check your network and try again.');
         return;
       }
 
@@ -30,11 +37,10 @@ export default function PostPage() {
 
         const carData = await response.json();
 
-        // Check if carData is null or empty, wait for 2 seconds, and navigate to /create
         if (!carData || carData.length === 0) {
           setTimeout(() => {
             navigate('/create');
-          }, 2000); // Wait 2 seconds before redirecting
+          }, 2000); 
         } else {
           setCars(carData);
           setDisplay(carData);
@@ -43,14 +49,12 @@ export default function PostPage() {
         localStorage.setItem('isLoggedIn', 'true');
       } catch (error) {
         console.error('Error fetching cars:', error);
-        navigate('/login');
+        setError('Failed to fetch car data. Please try again later.');
       }
     };
 
     fetchCars();
-  }, [navigate,cars]);
-
-  const [search, setSearch] = useState('');
+  }, [navigate]);
 
   const handleDelete = async (carId) => {
     const accessToken = localStorage.getItem('access_token');
@@ -78,6 +82,7 @@ export default function PostPage() {
     }
   };
 
+  if (error) return <p>{error}</p>;
   if (!cars.length) return <p>Loading...</p>;
 
   return (
@@ -109,7 +114,9 @@ export default function PostPage() {
           </div>
           <h1>{car.car_name}</h1>
           <h2>{car.title}</h2>
-          <p>{car.description}</p>
+          <div className="description">
+          <p >{car.description}</p>
+          </div>
           <div className="car-details">
             <p><strong>Type:</strong> {car.car_type}</p>
             <p><strong>Company:</strong> {car.company}</p>
@@ -121,8 +128,6 @@ export default function PostPage() {
               <img key={image.id} src={image.image_url} alt={`Car Image`} />
             ))}
           </div>
-
-         
           <div className="car-actions">
             <button onClick={() => navigate(`/edit/${car.id}`)}>Edit</button>
             <button onClick={() => handleDelete(car.id)}>Delete</button>
