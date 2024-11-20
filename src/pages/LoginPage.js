@@ -25,7 +25,16 @@ const LoginPage = () => {
     const handleLoginSubmit = async (event) => {
         event.preventDefault();
         setError(null);
-
+         
+    if (!username) {
+        setError('Username isrequired');
+        return;
+    }
+     
+     if (!password) {
+        setError('Password is required');
+        return;
+    }
         try {
             const response = await fetch('https://carsholic.vercel.app/api/login/', {
                 method: 'POST',

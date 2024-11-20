@@ -10,8 +10,16 @@
         const [email, setEmail] = useState('');
         const [confirmPassword, setConfirmPassword] = useState('');
         const [error, setError] = useState(null);
+        const [showPassword1, setShowPassword1] = useState(false);
+        const [showPassword2, setShowPassword2] = useState(false);
         const navigate = useNavigate();
-
+         
+        const togglePasswordVisibility1 = () => {
+            setShowPassword1(!showPassword1);
+        };
+        const togglePasswordVisibility2 = () => {
+            setShowPassword2(!showPassword2);
+        };
         const handleRegisterSubmit = async (event) => {
             event.preventDefault();
             setError(null);
@@ -73,10 +81,10 @@
                                 required
                             />
                         </div>
-                        <div className="input-ele-container">
+                        <div className="input-ele-container password-container">
                             <label className="input-label" htmlFor="passwordInput">Password</label>
                             <input
-                                type="password"
+                                type={showPassword1 ? 'text' : 'password'}
                                 id="passwordInput"
                                 className="text-input"
                                 value={password}
@@ -84,11 +92,15 @@
                                 autoComplete="new-password"
                                 required
                             />
+                            <i
+                            className={`fa-regular ${showPassword1 ? 'fa-eye-slash' : 'fa-solid fa-eye'} toggle-password`}
+                            onClick={togglePasswordVisibility1}
+                        ></i>
                         </div>
-                        <div className="input-ele-container">
+                        <div className="input-ele-container password-container">
                             <label className="input-label" htmlFor="confirmPasswordInput">Confirm Password</label>
                             <input
-                                type="password"
+                                type={showPassword2 ? 'text' : 'password'}
                                 id="confirmPasswordInput"
                                 className="text-input"
                                 value={confirmPassword}
@@ -96,6 +108,10 @@
                                 autoComplete="new-password"
                                 required
                             />
+                            <i
+                            className={`fa-regular ${showPassword2 ? 'fa-eye-slash' : 'fa-solid fa-eye'} toggle-password`}
+                            onClick={togglePasswordVisibility2}
+                        ></i>
                         </div>
                         {error && <p className="error-message">{error}</p>}
                         <button type="submit" className="login-button">Register</button>
