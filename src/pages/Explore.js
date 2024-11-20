@@ -17,18 +17,18 @@ export default function Explore() {
       }
 
       try {
-        // Fetch `isLoggedIn` status from localStorage
+        
         const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-        const token = localStorage.getItem('access_token');  // Assuming token is stored in localStorage
+        const token = localStorage.getItem('access_token');
 
-        // Adjust the API URL based on `isLoggedIn` status
+        
         let apiUrl = 'https://carsholic.vercel.app/api/cars/';
 
         if (isLoggedIn) {
           apiUrl += `?isLoggedin=true`;
         }
 
-        // Set up the request options
+      
         const options = {
           method: 'GET',
           headers: {
