@@ -148,7 +148,7 @@ export default function EditPost() {
       });
 
       if (response.ok) {
-        navigate(`/post/${id}`);
+        navigate(`/post`);
       } else {
         console.error('Failed to update car');
       }

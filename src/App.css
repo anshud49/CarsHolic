@@ -317,6 +317,25 @@ h2 {
   resize: vertical;
   height: 100px;
 }
+.create-car-form select {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #333;
+}
+
+.create-car-form select:focus {
+  outline: none;
+  border-color: #555;
+}
+
+.create-car-form option {
+  padding: 10px;
+}
 
 .create-car-form button {
   background-color: #333;

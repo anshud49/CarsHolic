@@ -104,7 +104,7 @@ const LoginPage = () => {
                         Continue with Google
                     </button>
                     <div className="newaccount">
-                        <a href="/newaccount">Create an account</a>
+                        <a href="/register">Create an account</a>
                     </div>
                 </form>
             </div>
