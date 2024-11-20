@@ -3,6 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import './LoginPage.css';
 import '../App.css';
 import Anshu from './Company.png';
+import { GoogleLogin } from '@react-oauth/google';
+
+
+
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
@@ -25,16 +29,16 @@ const LoginPage = () => {
     const handleLoginSubmit = async (event) => {
         event.preventDefault();
         setError(null);
-         
-    if (!username) {
-        setError('Username isrequired');
-        return;
-    }
-     
-     if (!password) {
-        setError('Password is required');
-        return;
-    }
+
+        if (!username) {
+            setError('Username is required');
+            return;
+        }
+
+        if (!password) {
+            setError('Password is required');
+            return;
+        }
         try {
             const response = await fetch('https://carsholic.vercel.app/api/login/', {
                 method: 'POST',
@@ -64,6 +68,35 @@ const LoginPage = () => {
             localStorage.setItem('isLoggedIn', 'false');
             setUsername('');
             setPassword('');
+        }
+    };
+    const handleGoogleSuccess = async (credentialResponse) => {
+        try {
+            const response = await fetch('https://carsholic.vercel.app/api/auth/google/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ token: credentialResponse.credential }),
+            });
+    
+            const data = await response.json();
+    
+            if (!response.ok) {
+                throw new Error(data.error || 'Google login failed');
+            }
+    
+            if (data.access && data.refresh) {
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('access_token', data.access);
+                localStorage.setItem('refresh_token', data.refresh);
+                navigate('/');
+            } else {
+                throw new Error('Missing tokens');
+            }
+        } catch (error) {
+            console.error('Google Login failed:', error);
+            setError(error.message || 'An error occurred');
         }
     };
 
@@ -108,10 +141,11 @@ const LoginPage = () => {
                         <div className="or-text">or sign in with</div>
                         <div className="line"></div>
                     </div>
-                    <button className="google-button">
-                        <img src="https://www.google.com/favicon.ico" alt="Google icon" width="20" height="20" />
-                        Continue with Google
-                    </button>
+                    <GoogleLogin
+                        onSuccess={handleGoogleSuccess}
+                        onError={() => console.log('Google Login Failed')}
+                    />
+
                     <div className="newaccount">
                         <a href="/register">Create an account</a>
                     </div>
