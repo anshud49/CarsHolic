@@ -129,6 +129,7 @@ h2 {
   padding: 10px;
   overflow: auto;
   max-height: 300px; 
+  overflow-y: hidden;
 }
 
 .car-images img {
@@ -139,6 +140,7 @@ h2 {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease; 
+
 }
 
 .car-images img:hover {
