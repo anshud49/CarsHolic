@@ -225,6 +225,10 @@ h2 {
   {
     font-size: 15px;
   }
+  header nav
+  {
+    gap:13px;
+  }
   
 }
 @media (max-width: 700px)
@@ -237,6 +241,10 @@ h2 {
   {
     font-size: 13px;
   }
+  header nav
+  {
+    gap:11px;
+  }
 }
 @media (max-width: 600px)
 {
@@ -248,12 +256,20 @@ h2 {
   {
     font-size: 11px;
   }
+  header nav
+  {
+    gap:9px;
+  }
 }
 
 @media (max-width: 480px) {
   .site-logoHeader
   {
     height: 21px;
+  }
+  header nav
+  {
+    gap:7px;
   }
   .headlinks
   {
@@ -276,7 +292,34 @@ h2 {
   }
 }
 
-
+@media (max-width: 440px) {
+  .site-logoHeader
+  {
+    width:25vw;
+  }
+  .headlinks
+  {
+    font-size: 10px;
+  }
+  header nav
+  {
+    gap:5px;
+  }
+} 
+@media (max-width: 400px) {
+  header nav
+  {
+    gap:3px;
+  }
+  .site-logoHeader
+  {
+    width:23vw;
+  }
+  .headlinks
+  {
+    font-size: 9px;
+  }
+} 
 .create-car-form {
   max-width: 600px;
   margin: 0 auto;
