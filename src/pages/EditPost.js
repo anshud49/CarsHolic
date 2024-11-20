@@ -13,6 +13,7 @@ export default function EditPost() {
   const [dealer, setDealer] = useState('');
   const [logoUrl, setLogoUrl] = useState('');
   const [images, setImages] = useState([]);
+  const [wpublic, setWpublic] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams(); 
 
@@ -46,6 +47,7 @@ export default function EditPost() {
           setDealer(data.dealer);
           setLogoUrl(data.logo_url);
           setImages(data.images);
+          setWpublic(data.public)
         } else {
           console.error('Failed to fetch car details');
         }
@@ -132,6 +134,7 @@ export default function EditPost() {
       dealer,
       logo_url: logoUrl,
       images: images.length > 0 ? images.map((image) => image.image_url) : [],
+      public:wpublic,
     };
 
     try {
@@ -203,6 +206,15 @@ export default function EditPost() {
         value={dealer}
         onChange={(e) => setDealer(e.target.value)}
       />
+      
+      <select
+        placeholder="Public/Private"
+        value={wpublic ? "Public" : "Private"}
+        onChange={(e) => setWpublic(e.target.value === "Public")}
+      >
+        <option value="Public">Public</option>
+        <option value="Private">Private</option>
+      </select>
 
       <h2>Upload Logo</h2>
       <button type="button" onClick={() => handleUpload('logo')}>

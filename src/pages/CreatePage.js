@@ -12,7 +12,8 @@ export default function CreatePost() {
   const [dealer, setDealer] = useState('');
   const [logoUrl, setLogoUrl] = useState('');
   const [images, setImages] = useState([]);
-  const [error, setError] = useState('')
+  const [error, setError] = useState('');
+  const [wpublic, setWpublic] = useState(false)
   const navigate = useNavigate();
 
   const UPLOADCARE_PUBLIC_KEY = 'bf39c083403d4ee12f92';
@@ -54,7 +55,7 @@ export default function CreatePost() {
 
   async function createNewCar(ev) {
     ev.preventDefault();
-    setError(''); 
+    setError('');
 
     const accessToken = localStorage.getItem('access_token');
 
@@ -73,6 +74,7 @@ export default function CreatePost() {
       dealer,
       logo_url: logoUrl,
       images: images.length > 0 ? images : [],
+      public:wpublic,
     };
 
     const response = await fetch('https://carsholic.vercel.app/api/cars/', {
@@ -89,9 +91,9 @@ export default function CreatePost() {
     } else {
       const errorData = await response.json();
       if (errorData.car_name) {
-        setError(errorData.car_name[0]); 
+        setError(errorData.car_name[0]);
       } else {
-        setError(errorData.detail || 'Failed to add car'); 
+        setError(errorData.detail || 'Failed to add car');
       }
     }
   }
@@ -141,6 +143,14 @@ export default function CreatePost() {
         value={dealer}
         onChange={(e) => setDealer(e.target.value)}
       />
+      <select
+        value={wpublic ? "Public" : "Private"}
+        onChange={(e) => setWpublic(e.target.value === "Public")}
+      >
+        <option value="Public">Public</option>
+        <option value="Private">Private</option>
+      </select>
+
 
       <h2>Upload Logo</h2>
       <button type="button" onClick={() => handleUpload('logo')}>
