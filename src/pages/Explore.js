@@ -17,7 +17,27 @@ export default function Explore() {
       }
 
       try {
-        const response = await fetch('https://carsholic.vercel.app/api/cars/');
+        // Fetch `isLoggedIn` status from localStorage
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        const token = localStorage.getItem('access_token');  // Assuming token is stored in localStorage
+
+        // Adjust the API URL based on `isLoggedIn` status
+        let apiUrl = 'https://carsholic.vercel.app/api/cars/';
+
+        if (isLoggedIn) {
+          apiUrl += `?isLoggedin=true`;
+        }
+
+        // Set up the request options
+        const options = {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            ...(isLoggedIn && token && { Authorization: `Bearer ${token}` }), // Add token header if logged in
+          },
+        };
+
+        const response = await fetch(apiUrl, options);
 
         if (!response.ok) {
           setError('Failed to fetch car data. Please try again later.');
