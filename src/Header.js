@@ -59,19 +59,19 @@ function Header() {
       </Link>
      
       <nav>
-      <Link to="/explore">Explore</Link>
+      <Link  className="headlinks"  to="/explore">Explore</Link>
         {isLoggedIn ? (
           <>
-            <Link to="/post">Your Cars</Link>
-            <Link to="/create">Create New Post</Link>
-            <a href="/" onClick={logout}>
+            <Link className="headlinks" to="/post">Your Cars</Link>
+            <Link className="headlinks" to="/create">Create Post</Link>
+            <a href="/" className="headlinks"  onClick={logout}>
               Logout
             </a>
           </>
         ) : (
           <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            <Link className="headlinks" to="/login">Login</Link>
+            <Link className="headlinks" to="/register">Register</Link>
           </>
         )}
       </nav>

@@ -221,13 +221,51 @@ h2 {
     padding: 8px 16px;
     font-size: 0.9rem;
   }
+  .headlinks
+  {
+    font-size: 15px;
+  }
+  
+}
+@media (max-width: 700px)
+{
+  .site-logoHeader
+  {
+    height: 27px;
+  }
+  .headlinks
+  {
+    font-size: 13px;
+  }
+}
+@media (max-width: 600px)
+{
+  .site-logoHeader
+  {
+    height: 24px;
+  }
+  .headlinks
+  {
+    font-size: 11px;
+  }
 }
 
 @media (max-width: 480px) {
+  .site-logoHeader
+  {
+    height: 21px;
+  }
+  .headlinks
+  {
+    font-size: 10px;
+  }
   .car-actions {
     flex-direction: column;
   }
-
+  .description p
+  {
+    font-size:12px ;
+  }
   .car-actions button {
     width: 100%;
     margin-bottom: 10px;
