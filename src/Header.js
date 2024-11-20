@@ -57,10 +57,12 @@ function Header() {
       <Link to="/" className="logo">
         <img src={Anshu} className="site-logoHeader" alt="Company Logo" />
       </Link>
-
+     
       <nav>
+      <Link to="/explore">Explore</Link>
         {isLoggedIn ? (
           <>
+            <Link to="/post">Your Cars</Link>
             <Link to="/create">Create New Post</Link>
             <a href="/" onClick={logout}>
               Logout

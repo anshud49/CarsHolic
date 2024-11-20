@@ -8,6 +8,7 @@ import CreatePost from './pages/CreatePage';
 import { UserContextProvider } from './UserContext';
 import PostPage from './pages/PostPage';
 import EditPost from './pages/EditPost';
+import Explore from './pages/Explore';
 
 function App() {
   return (
@@ -15,11 +16,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<PostPage />} />
+            <Route index element={<Explore />} />
+            <Route path={'/explore'} element={<Explore />} />
             <Route path={'/login'} element={<LoginPage />} />
             <Route path={'/register'} element={<RegisterPage />} />
             <Route path={'/create'} element={<CreatePost />} />
-            <Route path={'/post/:id'} element={<PostPage />} />
+            <Route path={'/post'} element={<PostPage />} />
             <Route path={'/edit/:id'} element={<EditPost />} />
           </Route>
         </Routes>
