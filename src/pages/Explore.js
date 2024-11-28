@@ -33,7 +33,7 @@ export default function Explore() {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            ...(isLoggedIn && token && { Authorization: `Bearer ${token}` }), // Add token header if logged in
+            ...(isLoggedIn && token && { Authorization: `Bearer ${token}` }), 
           },
         };
 
@@ -41,6 +41,7 @@ export default function Explore() {
 
         if (!response.ok) {
           setError('Failed to fetch car data. Please try again later.');
+          navigate('/')
           return;
         }
 
@@ -55,6 +56,7 @@ export default function Explore() {
       } catch (error) {
         console.error('Error fetching cars:', error);
         setError('Failed to fetch car data. Please try again later.');
+        navigate('/')
       }
     };
 
