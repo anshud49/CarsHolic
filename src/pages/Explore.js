@@ -40,8 +40,7 @@ export default function Explore() {
         const response = await fetch(apiUrl, options);
 
         if (!response.ok) {
-          setError('Failed to fetch car data. Please try again later.');
-          navigate('/')
+          navigate('/login')
           return;
         }
 
@@ -55,8 +54,7 @@ export default function Explore() {
         }
       } catch (error) {
         console.error('Error fetching cars:', error);
-        setError('Failed to fetch car data. Please try again later.');
-        navigate('/')
+        navigate('/login')
       }
     };
 
