@@ -38,9 +38,9 @@ export default function PostPage() {
         const carData = await response.json();
 
         if (!carData || carData.length === 0) {
-          setTimeout(() => {
+
             navigate('/create');
-          }, 2000);
+          
         } else {
           setCars(carData);
           setDisplay(carData);
@@ -54,7 +54,7 @@ export default function PostPage() {
     };
 
     fetchCars();
-  }, [navigate]);
+  }, [navigate,cars]);
 
   const handleDelete = async (carId) => {
     const accessToken = localStorage.getItem('access_token');

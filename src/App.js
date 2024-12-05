@@ -9,7 +9,7 @@ import { UserContextProvider } from './UserContext';
 import PostPage from './pages/PostPage';
 import EditPost from './pages/EditPost';
 import Explore from './pages/Explore';
-import PrivateRoute from './pages/PrivateRoute';
+import PrivateRoute from './pages/PrivateRoute'
 
 function App() {
   return (
