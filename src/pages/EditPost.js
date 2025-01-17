@@ -15,7 +15,7 @@ export default function EditPost() {
   const [images, setImages] = useState([]);
   const [wpublic, setWpublic] = useState(false);
   const navigate = useNavigate();
-  const { id } = useParams(); 
+  const { id } = useParams();
 
   const UPLOADCARE_PUBLIC_KEY = 'bf39c083403d4ee12f92';
   const MAX_IMAGES = 10;
@@ -134,7 +134,7 @@ export default function EditPost() {
       dealer,
       logo_url: logoUrl,
       images: images.length > 0 ? images.map((image) => image.image_url) : [],
-      public:wpublic,
+      public: wpublic,
     };
 
     try {
@@ -157,94 +157,100 @@ export default function EditPost() {
     }
   };
 
-  if (!car) return <p>Loading...</p>;
+  if (!car) return (
+    <div className="loading">
+     <p>Loading...</p>
+    </div>
+);
 
   const remainingImages = MAX_IMAGES - images.length;
 
   return (
-    <form onSubmit={handleUpdateCar} className="create-car-form">
-      <h1>Edit Car</h1>
+    <div className="edit-post-page">
+      <form onSubmit={handleUpdateCar} className="create-car-form">
+        <h1>Edit Car</h1>
 
-      <input
-        type="text"
-        placeholder="Car Name"
-        value={carName}
-        onChange={(e) => setCarName(e.target.value)}
-      />
-      <textarea
-        placeholder="Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Tags (comma-separated)"
-        value={tags}
-        onChange={(e) => setTags(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Car Type (e.g., Sedan, SUV)"
-        value={carType}
-        onChange={(e) => setCarType(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Company"
-        value={company}
-        onChange={(e) => setCompany(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Dealer"
-        value={dealer}
-        onChange={(e) => setDealer(e.target.value)}
-      />
-      
-      <select
-        placeholder="Public/Private"
-        value={wpublic ? "Public" : "Private"}
-        onChange={(e) => setWpublic(e.target.value === "Public")}
-      >
-        <option value="Public">Public</option>
-        <option value="Private">Private</option>
-      </select>
+        <input
+          type="text"
+          placeholder="Car Name"
+          value={carName}
+          onChange={(e) => setCarName(e.target.value)}
+        />
+        <textarea
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Tags (comma-separated)"
+          value={tags}
+          onChange={(e) => setTags(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Car Type (e.g., Sedan, SUV)"
+          value={carType}
+          onChange={(e) => setCarType(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Company"
+          value={company}
+          onChange={(e) => setCompany(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Dealer"
+          value={dealer}
+          onChange={(e) => setDealer(e.target.value)}
+        />
 
-      <h2>Upload Logo</h2>
-      <button type="button" onClick={() => handleUpload('logo')}>
-        Upload Logo
-      </button>
-      {logoUrl && <p>Logo Uploaded: <a href={logoUrl} target="_blank" rel="noopener noreferrer">{logoUrl}</a></p>}
+        <select
+          placeholder="Public/Private"
+          value={wpublic ? "Public" : "Private"}
+          onChange={(e) => setWpublic(e.target.value === "Public")}
+        >
+          <option value="Public">Public</option>
+          <option value="Private">Private</option>
+        </select>
 
-      <h2>Upload Images</h2>
-      <button
-        type="button"
-        onClick={() => handleUpload('images')}
-        disabled={remainingImages === 0}
-      >
-        Upload Images
-      </button>
-      <p>{remainingImages} more images can be uploaded.</p>
-      {images.length > 0 && (
-        <div>
-          {images.map((image, index) => (
-            <div key={index}>
-              <p>
-                Image Uploaded: <a href={image.image_url} target="_blank" rel="noopener noreferrer">{image.image_url}</a>
-                <button type="button" onClick={() => handleDeleteImage(image.id)}>Delete</button>
-              </p>
-            </div>
-          ))}
-        </div>
-      )}
+        <h2>Upload Logo</h2>
+        <button type="button" onClick={() => handleUpload('logo')}>
+          Upload Logo
+        </button>
+        {logoUrl && <p>Logo Uploaded: <a href={logoUrl} target="_blank" rel="noopener noreferrer">{logoUrl}</a></p>}
 
-      <button type="submit">Update Car</button>
-    </form>
+        <h2>Upload Images</h2>
+        <button
+          type="button"
+          onClick={() => handleUpload('images')}
+          disabled={remainingImages === 0}
+        >
+          Upload Images
+        </button>
+        <p>{remainingImages} more images can be uploaded.</p>
+        {images.length > 0 && (
+          <div>
+            {images.map((image, index) => (
+              <div key={index}>
+                <p>
+                  Image Uploaded: <a href={image.image_url} target="_blank" rel="noopener noreferrer">{image.image_url}</a>
+                  <button type="button" onClick={() => handleDeleteImage(image.id)}>Delete</button>
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <button type="submit">Update Car</button>
+      </form>
+    </div>
   );
 }

@@ -17,23 +17,23 @@ export default function Explore() {
       }
 
       try {
-        
+
         const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
         const token = localStorage.getItem('access_token');
 
-        
+
         let apiUrl = 'https://carsholic.vercel.app/api/cars/';
 
         if (isLoggedIn) {
           apiUrl += `?isLoggedin=true`;
         }
 
-      
+
         const options = {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            ...(isLoggedIn && token && { Authorization: `Bearer ${token}` }), 
+            ...(isLoggedIn && token && { Authorization: `Bearer ${token}` }),
           },
         };
 
@@ -61,8 +61,17 @@ export default function Explore() {
     fetchCars();
   }, []);
 
-  if (error) return <p>{error}</p>;
-  if (!cars.length) return <p>Loading...</p>;
+  if (error) return (
+    <div className="loading">
+  <p>{error}</p>
+    </div>
+  );
+
+  if (!cars.length) return (
+    <div className="loading">
+      <p>Loading...</p>
+    </div>
+  );
 
   return (
     <div className="car-page">

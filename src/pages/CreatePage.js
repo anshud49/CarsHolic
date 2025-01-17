@@ -74,7 +74,7 @@ export default function CreatePost() {
       dealer,
       logo_url: logoUrl,
       images: images.length > 0 ? images : [],
-      public:wpublic,
+      public: wpublic,
     };
 
     const response = await fetch('https://carsholic.vercel.app/api/cars/', {
@@ -99,81 +99,83 @@ export default function CreatePost() {
   }
 
   return (
-    <form onSubmit={createNewCar} className="create-car-form">
-      <h1>Create a New Car</h1>
+    <div className="create-page">
+      <form onSubmit={createNewCar} className="create-car-form">
+        <h1>Create a New Car</h1>
 
-      <input
-        type="text"
-        placeholder="Car Name"
-        value={carName}
-        onChange={(e) => setCarName(e.target.value)}
-      />
-      <textarea
-        placeholder="Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Tags (comma-separated)"
-        value={tags}
-        onChange={(e) => setTags(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Car Type (e.g., Sedan, SUV)"
-        value={carType}
-        onChange={(e) => setCarType(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Company"
-        value={company}
-        onChange={(e) => setCompany(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Dealer"
-        value={dealer}
-        onChange={(e) => setDealer(e.target.value)}
-      />
-      <select
-        value={wpublic ? "Public" : "Private"}
-        onChange={(e) => setWpublic(e.target.value === "Public")}
-      >
-        <option value="Public">Public</option>
-        <option value="Private">Private</option>
-      </select>
+        <input
+          type="text"
+          placeholder="Car Name"
+          value={carName}
+          onChange={(e) => setCarName(e.target.value)}
+        />
+        <textarea
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Tags (comma-separated)"
+          value={tags}
+          onChange={(e) => setTags(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Car Type (e.g., Sedan, SUV)"
+          value={carType}
+          onChange={(e) => setCarType(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Company"
+          value={company}
+          onChange={(e) => setCompany(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Dealer"
+          value={dealer}
+          onChange={(e) => setDealer(e.target.value)}
+        />
+        <select
+          value={wpublic ? "Public" : "Private"}
+          onChange={(e) => setWpublic(e.target.value === "Public")}
+        >
+          <option value="Public">Public</option>
+          <option value="Private">Private</option>
+        </select>
 
 
-      <h2>Upload Logo</h2>
-      <button type="button" onClick={() => handleUpload('logo')}>
-        Upload Logo
-      </button>
-      {logoUrl && <p>Logo Uploaded: <a href={logoUrl} target="_blank" rel="noopener noreferrer">{logoUrl}</a></p>}
+        <h2>Upload Logo</h2>
+        <button type="button" onClick={() => handleUpload('logo')}>
+          Upload Logo
+        </button>
+        {logoUrl && <p>Logo Uploaded: <a href={logoUrl} target="_blank" rel="noopener noreferrer">{logoUrl}</a></p>}
 
-      <h2>Upload Images</h2>
-      <button type="button" onClick={() => handleUpload('images')}>
-        Upload Images
-      </button>
-      {images.length > 0 && (
-        <div>
-          {images.map((imageUrl, index) => (
-            <p key={index}>
-              Image Uploaded: <a href={imageUrl} target="_blank" rel="noopener noreferrer">{imageUrl}</a>
-            </p>
-          ))}
-        </div>
-      )}
+        <h2>Upload Images</h2>
+        <button type="button" onClick={() => handleUpload('images')}>
+          Upload Images
+        </button>
+        {images.length > 0 && (
+          <div>
+            {images.map((imageUrl, index) => (
+              <p key={index}>
+                Image Uploaded: <a href={imageUrl} target="_blank" rel="noopener noreferrer">{imageUrl}</a>
+              </p>
+            ))}
+          </div>
+        )}
 
-      <button type="submit">Add Car</button>
-      {error && <p className="error-message">{error}</p>}
-    </form>
+        <button type="submit">Add Car</button>
+        {error && <p className="error-message">{error}</p>}
+      </form>
+    </div>
   );
 }

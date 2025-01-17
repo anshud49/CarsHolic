@@ -83,7 +83,11 @@ export default function PostPage() {
   };
 
   if (error) return <p>{error}</p>;
-  if (!cars.length) return <p>Loading...</p>;
+  if (!cars.length) return (
+    <div className="loading">
+     <p>Loading...</p>
+    </div>
+);
 
   return (
     <div className="car-page">

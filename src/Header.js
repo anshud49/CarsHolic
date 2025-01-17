@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './App.css';
 import Anshu from './pages/Company.png';
 
+
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();

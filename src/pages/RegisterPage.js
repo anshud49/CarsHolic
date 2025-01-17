@@ -85,7 +85,7 @@ const RegisterPage = () => {
 
     return (
         <div className="container">
-            <div className="inner-container">
+            <div className="inner-container register-container">
                 <img src={Anshu} className="site-logo" alt="Company Logo" />
                 <form onSubmit={handleRegisterSubmit} id="registerForm">
                     <div className="input-ele-container">
@@ -145,7 +145,7 @@ const RegisterPage = () => {
                         ></i>
                     </div>
                     {error && <p className="error-message">{error}</p>}
-                    <button type="submit" className="login-button">Sign Up</button>
+                    <button type="submit" className="signup-button">Sign Up</button>
 
                     <div className="or-container">
                         <div className="line"></div>
