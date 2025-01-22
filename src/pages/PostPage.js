@@ -104,9 +104,9 @@ export default function PostPage() {
             <div className="para">
               <div><Skeleton count={3} style={{ marginBottom: '.5rem' }} /></div>
             </div>
-            <div className="car-actions-skeletion" style={{ width: '92%' }}>
-            <Skeleton height={40} width={80} style={{float:"left"}} />
-            <Skeleton height={40} width={80} style={{float:"right"}} />
+            <div className="car-actions-skeletion" style={{ width: '92%' ,display:"flex",justifyContent:"space-between"}}>
+            <Skeleton height={40} width={80}  />
+            <Skeleton height={40} width={80}  />
           </div>
           </div>
         ))}
