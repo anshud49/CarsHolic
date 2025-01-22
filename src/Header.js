@@ -9,19 +9,14 @@ function Header() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const handleStorageChange = () => {
-      const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
-      setIsLoggedIn(storedIsLoggedIn === 'true');
-    };
-  
-    handleStorageChange(); 
-
-    window.addEventListener('storage', handleStorageChange);
-  
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-    };
-  }, []);
+   
+    const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
+    if (storedIsLoggedIn === 'true') {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, [localStorage.getItem('isLoggedIn')]);
 
   const logout = (event) => {
     event.preventDefault();
