@@ -162,8 +162,9 @@ export default function EditPost() {
   if (!car) {
     return (
       <div className="edit-post-page">
-        <h1><Skeleton width={200} height={30} /></h1>
+       
         <form className="create-car-form">
+        <h1><Skeleton width={200} height={30} /></h1>
           <Skeleton count={1} height={40} width="100%" style={{ marginBottom: '1rem' }} />
           <Skeleton count={1} height={100} width="100%" style={{ marginBottom: '1rem' }} />
           <Skeleton count={1} height={40} width="100%" style={{ marginBottom: '1rem' }} />
