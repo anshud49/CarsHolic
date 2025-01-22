@@ -87,7 +87,7 @@ export default function CreatePost() {
     });
 
     if (response.ok) {
-      navigate('/');
+      navigate(`/post`);
     } else {
       const errorData = await response.json();
       if (errorData.car_name) {

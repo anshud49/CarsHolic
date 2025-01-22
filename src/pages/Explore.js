@@ -117,7 +117,7 @@ export default function Explore() {
           />
 
           {display.length > 0 ? (
-            display.map((car) => (
+            display.slice().reverse().map((car) => (
               <div key={car.id} className="car">
                 <div className="car-logo">
                   <img src={car.logo_url} alt={`${car.car_name} logo`} />
