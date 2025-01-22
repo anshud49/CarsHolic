@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import uploadcare from 'uploadcare-widget';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function EditPost() {
   const [car, setCar] = useState(null);
@@ -157,12 +159,38 @@ export default function EditPost() {
     }
   };
 
-  if (!car) return (
-    <div className="loading">
-     <p>Loading...</p>
-    </div>
-);
+  if (!car) {
+    return (
+      <div className="edit-post-page">
+        <h1><Skeleton width={200} height={30} /></h1>
+        <form className="create-car-form">
+          <Skeleton count={1} height={40} width="100%" style={{ marginBottom: '1rem' }} />
+          <Skeleton count={1} height={100} width="100%" style={{ marginBottom: '1rem' }} />
+          <Skeleton count={1} height={40} width="100%" style={{ marginBottom: '1rem' }} />
+          <Skeleton count={1} height={40} width="100%" style={{ marginBottom: '1rem' }} />
+          <Skeleton count={1} height={40} width="100%" style={{ marginBottom: '1rem' }} />
+          <Skeleton count={1} height={40} width="100%" style={{ marginBottom: '1rem' }} />
+          <Skeleton count={1} height={40} width="100%" style={{ marginBottom: '1rem' }} />
+          <Skeleton count={1} height={40} width="100%" style={{ marginBottom: '1rem' }} />
+          <h2><Skeleton width={150} height={25} /></h2>
+          <div style={{ width:"100%", margin:"auto" }}>
+           <Skeleton count={1} height={40}  style={{ marginBottom: '1rem' }} />
+          </div> 
+          <h2><Skeleton width={150} height={25} /></h2>
+          <div style={{ width:"100%", margin:"auto" }}>
+           <Skeleton count={1} height={40}  style={{ marginBottom: '1rem' }} />
+          </div> 
+          <Skeleton count={1} height={40} width="80%" />
+          <Skeleton count={3} height={40} width="100%" style={{ marginTop: '1rem' }} />
+          <div style={{ width:"40%", margin:"auto" }}>
+            <Skeleton count={1} height={40}  style={{ marginTop: '1rem'}} />
+          </div> 
+        </form>
+      </div>
+    );
+  }
 
+  
   const remainingImages = MAX_IMAGES - images.length;
 
   return (
